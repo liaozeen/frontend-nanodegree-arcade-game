@@ -76,7 +76,7 @@ Player.prototype.update = function(dt){
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     ctx.font="28px roboto";
-    ctx.fillText("星星: " + this.starNum+ "   分值："+this.score+"     剩余秒杀："+player.crushCount, 0, 30);
+    ctx.fillText("星星: " + this.starNum+ "   分-值："+this.score+"     剩余秒杀："+player.crushCount, 0, 30);
 
 };
 
