@@ -88,7 +88,7 @@ Player.prototype.handleInput = function(movement){
 
       if(404>this.x){
         switch(movement){
-       case 'right':this.x +=101;
+        case 'right':this.x +=101;
     }};
 
      if(387>this.y){
@@ -98,7 +98,7 @@ Player.prototype.handleInput = function(movement){
 
      if(0<this.y){
         switch(movement){
-         case 'up':this.y -=83;
+        case 'up':this.y -=83;
     }};
 
     if(this.y<55){
