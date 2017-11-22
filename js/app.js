@@ -2,6 +2,8 @@
 function getrandom(min,max){
     return Math.floor(Math.random()*(max-min+1))+min;
 }
+//获取画布的宽度
+var ctxWidth = ctx.canvas.width;
 
 // 这是我们的玩家要躲避的敌人
 var Enemy = function() {
@@ -23,7 +25,7 @@ Enemy.prototype.update = function(dt) {
     // 都是以同样的速度运行的
 
    this.x += dt*this.speed;
-    if (this.x >= 505) {
+    if (this.x >= ctxWidth) {
         this.x = 0;
         this.y = 83*getrandom(0,2)+55;
         this.speed = getrandom(100,400);
@@ -47,7 +49,7 @@ var Star = function() {
 //更新星星的位置
 Star.prototype.update = function(dt) {
     this.x += dt*this.speed;
-    if (this.x >= 505) {
+    if (this.x >= ctxWidth) {
         this.x = 0;
         this.y = 83*getrandom(0,2)+55;
     }
@@ -80,25 +82,28 @@ Player.prototype.render = function() {
     ctx.fillText("星星: " + this.starNum+ "         经验值："+this.score+"          剩余秒杀："+player.crushCount, 0, 30);
 };
 //控制玩家上下左右移动和检测玩家是否在对岸
+//将常量用变量保存，以便在其他函数重复使用，也便于以后的维护
+var CELL_WIDTH = 101;
+var CELL_HEIGHT = 83;
 Player.prototype.handleInput = function(movement){
     if(0<this.x){
         switch(movement){
-        case 'left':this.x -=101;
+        case 'left':this.x -=CELL_WIDTH;
     }};
 
       if(404>this.x){
         switch(movement){
-        case 'right':this.x +=101;
+        case 'right':this.x +=CELL_WIDTH;
     }};
 
      if(387>this.y){
         switch(movement){
-        case 'down':this.y +=83;
+        case 'down':this.y +=CELL_HEIGHT;
     }};
 
      if(0<this.y){
         switch(movement){
-        case 'up':this.y -=83;
+        case 'up':this.y -=CELL_HEIGHT;
     }};
 
     if(this.y<55){

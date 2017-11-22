@@ -87,7 +87,7 @@ var Engine = (function(global) {
      */
     function render() {
         /* 这个数组保存着游戏关卡的特有的行对应的图片相对路径。 */
-         ctx.clearRect(0,0,505, 606);
+        ctx.clearRect(0,0,505, 606);
         var rowImages = [
                 'images/grass-block.png',   // 这一行是河。
                'images/stone-block.png',   // 第一行石头
